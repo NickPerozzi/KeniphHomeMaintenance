@@ -1,16 +1,13 @@
 package com.example.keniphhomemaintenance
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.keniphhomemaintenance.dwellings.Dwelling
-import com.example.keniphhomemaintenance.ui.DwellingsScreenView
+import com.example.keniphhomemaintenance.dwellings.DwellingsScreenView
 import com.example.keniphhomemaintenance.ui.Screen
 
 @ExperimentalComposeUiApi
