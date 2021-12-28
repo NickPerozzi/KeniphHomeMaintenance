@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">KeniphHomeMaintenance</string>
+    <string name="maintenance_item_dialog_title">New Maintenance Task</string>
+    <string name = "maintenance_item_dialog_task_name_field_placeholder">Task name</string>
+    <string name = "maintenance_item_dialog_due_date_field_placeholder">Due date</string>
+    <string name = "maintenance_item_dialog_location_field_placeholder">Location</string>
+    <string name = "maintenance_item_dialog_cancel_button_text">Cancel</string>
+    <string name = "maintenance_item_dialog_add_item_button_text">Add Item</string>
 </resources>
