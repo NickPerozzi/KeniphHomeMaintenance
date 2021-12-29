@@ -7,9 +7,9 @@
     <string name = "maintenance_item_dialog_cancel_button_text">Cancel</string>
     <string name = "maintenance_item_dialog_add_item_button_text">Add Item</string>
     <string name = "new_maintenance_item_button">Button to add a maintenance item</string>
-    <string name = "location_field_label">Location of a task</string>
-    <string name = "due_date_field_label">Due date of a task</string>
-    <string name = "title_field_label">Title of a task</string>
+    <string name = "location_field_label">Location</string>
+    <string name = "due_date_field_label">Due date</string>
+    <string name = "task_name_field_label">Task name</string>
     <string name = "maintenance_item_type_image">Maintenance item type image</string>
 
 </resources>

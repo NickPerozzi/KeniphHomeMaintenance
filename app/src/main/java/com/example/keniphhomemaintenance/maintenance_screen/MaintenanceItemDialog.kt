@@ -12,8 +12,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -62,7 +60,7 @@ fun NewMaintenanceItemDialog(
 
                 MaintenanceTextField(
                     fieldValue = itemTitle,
-                    fieldLabel = R.string.title_field_label,
+                    fieldLabel = R.string.task_name_field_label,
                     placeholder = R.string.maintenance_item_dialog_task_name_field_placeholder,
                     focusAction = FocusOptions.Down
                 )
@@ -71,7 +69,7 @@ fun NewMaintenanceItemDialog(
 
                 MaintenanceTextField(
                     fieldValue = dueDate,
-                    fieldLabel = R.string.location_field_label,
+                    fieldLabel = R.string.due_date_field_label,
                     placeholder = R.string.maintenance_item_dialog_due_date_field_placeholder,
                     focusAction = FocusOptions.Down
                 )
