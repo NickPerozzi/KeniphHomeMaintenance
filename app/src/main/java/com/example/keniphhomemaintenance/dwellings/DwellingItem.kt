@@ -39,7 +39,6 @@ fun DwellingItem(dwelling: Dwelling, navController: NavController) {
                     .align(Alignment.CenterVertically)
             ) {
                 Text(text = dwelling.name, style = typography.h4)
-                Text(text = dwelling.type.toString(), style = typography.h5)
                 Text(text = dwelling.address as String, style = typography.h6)
                 Button(onClick = {
                     navController.navigate(

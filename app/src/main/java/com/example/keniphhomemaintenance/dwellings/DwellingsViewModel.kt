@@ -7,11 +7,10 @@ import androidx.lifecycle.ViewModel
 class DwellingsViewModel : ViewModel() {
 
     private val placeholderDwelling1: Dwelling =
-        Dwelling(1, "My home", DwellingType.House, "420 Blazit Blvd., Rantoul, IL 61866")
+        Dwelling(1, "My home", "420 Blazit Blvd., Rantoul, IL 61866")
     private val placeholderDwelling2: Dwelling = Dwelling(
         2,
         "Tenant complex",
-        DwellingType.Apartment,
         "80085 Mayju Look., Rantoul, IL 61866"
     )
     val dwellingsList: MutableState<List<Dwelling>> = mutableStateOf(

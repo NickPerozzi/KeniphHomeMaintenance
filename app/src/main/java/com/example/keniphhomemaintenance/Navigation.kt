@@ -10,7 +10,6 @@ import androidx.navigation.navArgument
 import com.example.keniphhomemaintenance.dwellings.DwellingsScreenView
 import com.example.keniphhomemaintenance.ui.Screen
 
-@ExperimentalComposeUiApi
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
