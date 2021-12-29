@@ -7,7 +7,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_TITLE_AND_DUE_DATE_PADDING
 
 @Composable
@@ -18,7 +17,7 @@ fun ListItemBones(maintenanceItem: MaintenanceItem) {
             color = MaterialTheme.colors.secondaryVariant,
             style = MaterialTheme.typography.h5
         )
-        Spacer(modifier = Modifier.height(MAINTENANCE_TITLE_AND_DUE_DATE_PADDING.dp))
+        Spacer(modifier = Modifier.height(MAINTENANCE_TITLE_AND_DUE_DATE_PADDING))
         Text(
             text = maintenanceItem.dueDate,
             color = MaterialTheme.colors.onBackground,

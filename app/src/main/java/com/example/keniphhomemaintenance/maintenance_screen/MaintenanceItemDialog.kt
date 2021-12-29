@@ -41,12 +41,12 @@ fun NewMaintenanceItemDialog(
         Surface(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(vertical = MAINTENANCE_ITEM_DIALOG_VERTICAL_PADDING.dp),
-            shape = RoundedCornerShape(MAINTENANCE_ITEM_DIALOG_CORNER_RADIUS.dp),
+                .padding(vertical = MAINTENANCE_ITEM_DIALOG_VERTICAL_PADDING),
+            shape = RoundedCornerShape(MAINTENANCE_ITEM_DIALOG_CORNER_RADIUS),
             color = MaterialTheme.colors.background
         ) {
             Column(
-                modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_TOP_PADDING.dp),
+                modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_TOP_PADDING),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Top
             ) {
@@ -54,9 +54,9 @@ fun NewMaintenanceItemDialog(
                     text = stringResource(R.string.maintenance_item_dialog_title),
                     color = MaterialTheme.colors.onBackground,
                     fontWeight = FontWeight.Bold,
-                    fontSize = MAINTENANCE_ITEM_CARD_TITLE_TEXT_SIZE.sp
+                    fontSize = MAINTENANCE_ITEM_CARD_TITLE_TEXT_SIZE
                 )
-                Spacer(modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_TITLE_BOTTOM_PADDING.dp))
+                Spacer(modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_TITLE_BOTTOM_PADDING))
 
                 MaintenanceTextField(
                     fieldValue = itemTitle,
@@ -65,7 +65,7 @@ fun NewMaintenanceItemDialog(
                     focusAction = FocusOptions.Down
                 )
 
-                Spacer(modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_PADDING_BETWEEN_TEXT_FIELDS.dp))
+                Spacer(modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_PADDING_BETWEEN_TEXT_FIELDS))
 
                 MaintenanceTextField(
                     fieldValue = dueDate,
@@ -74,7 +74,7 @@ fun NewMaintenanceItemDialog(
                     focusAction = FocusOptions.Down
                 )
 
-                Spacer(modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_PADDING_BETWEEN_TEXT_FIELDS.dp))
+                Spacer(modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_PADDING_BETWEEN_TEXT_FIELDS))
 
                 MaintenanceTextField(
                     fieldValue = location,
@@ -83,7 +83,7 @@ fun NewMaintenanceItemDialog(
                     focusAction = FocusOptions.Clear
                 )
 
-                Spacer(modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_LOCATION_FIELD_BOTTOM_PADDING.dp))
+                Spacer(modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_LOCATION_FIELD_BOTTOM_PADDING))
 
                 Row(
                     modifier = Modifier

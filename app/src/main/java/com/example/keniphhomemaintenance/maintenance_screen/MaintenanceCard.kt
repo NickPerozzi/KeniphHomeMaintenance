@@ -20,11 +20,11 @@ import com.example.keniphhomemaintenance.R
 
 @Composable
 fun MaintenanceCard(maintenanceItem: MaintenanceItem) {
-    Spacer(modifier = Modifier.width(MAINTENANCE_CARD_START_PADDING.dp))
+    Spacer(modifier = Modifier.width(MAINTENANCE_CARD_START_PADDING))
     Row(
         modifier = Modifier
-            .padding(vertical = MAINTENANCE_CARD_ROW_VERTICAL_PADDING.dp)
-            .padding(start = MAINTENANCE_CARD_ROW_START_PADDING.dp)
+            .padding(vertical = MAINTENANCE_CARD_ROW_VERTICAL_PADDING)
+            .padding(start = MAINTENANCE_CARD_ROW_START_PADDING)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -40,11 +40,11 @@ fun MaintenanceCard(maintenanceItem: MaintenanceItem) {
             ),
             contentDescription = stringResource(id = R.string.maintenance_item_type_image),
             modifier = Modifier
-                .size(MAINTENANCE_IMAGE_SIZE.dp)
+                .size(MAINTENANCE_IMAGE_SIZE)
                 .clip(CircleShape)
         )
 
-        Spacer(modifier = Modifier.width(MAINTENANCE_IMAGE_END_PADDING.dp))
+        Spacer(modifier = Modifier.width(MAINTENANCE_IMAGE_END_PADDING))
 
         ListItemBones(maintenanceItem = maintenanceItem)
     }
