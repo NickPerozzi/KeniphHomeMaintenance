@@ -7,7 +7,11 @@ import androidx.lifecycle.ViewModel
 class DwellingsViewModel : ViewModel() {
 
     private val placeholderDwelling1: Dwelling =
-        Dwelling(1, "My home", "420 Blazit Blvd., Rantoul, IL 61866")
+        Dwelling(
+            1,
+            "My home",
+            "420 Blazit Blvd., Rantoul, IL 61866"
+        )
     private val placeholderDwelling2: Dwelling = Dwelling(
         2,
         "Tenant complex",

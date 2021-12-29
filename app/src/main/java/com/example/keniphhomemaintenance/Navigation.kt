@@ -1,7 +1,7 @@
 package com.example.keniphhomemaintenance
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,6 +13,8 @@ import com.example.keniphhomemaintenance.ui.Screen
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
+    val defaultDwellingName = stringResource(R.string.default_dwelling_name)
+    val defaultDwellingAddress = stringResource(R.string.default_dwelling_address)
     NavHost(navController = navController, startDestination = Screen.DwellingsScreen.route) {
         composable(route = Screen.DwellingsScreen.route) {
             DwellingsScreenView(navController = navController)
@@ -22,11 +24,11 @@ fun Navigation() {
             arguments = listOf(
                 navArgument("name") {
                     type = NavType.StringType
-                    defaultValue = "Default Name"
+                    defaultValue = defaultDwellingName
                     nullable = true
                 }, navArgument("address") {
                     type = NavType.StringType
-                    defaultValue = "Default Address"
+                    defaultValue = defaultDwellingAddress
                     nullable = true
                 }
             )

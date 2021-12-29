@@ -15,11 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.keniphhomemaintenance.R
 import com.example.keniphhomemaintenance.ui.Screen
-
-val dwellingsViewModel = DwellingsViewModel()
 
 @Composable
 fun DwellingItem(dwelling: Dwelling, navController: NavController) {
@@ -48,34 +48,9 @@ fun DwellingItem(dwelling: Dwelling, navController: NavController) {
                         )
                     )
                 }) {
-                    Text(text = "See details")
+                    Text(text = stringResource(R.string.see_details))
                 }
             }
         }
     }
 }
-
-/*
-@Composable
-fun NewDwellingItem() {
-    Card(
-        modifier = Modifier
-            .padding(horizontal = 8.dp, vertical = 8.dp)
-            .fillMaxWidth(),
-        elevation = 2.dp,
-        backgroundColor = Color(0xFFAAFFAA),
-        shape = RoundedCornerShape(corner = CornerSize(16.dp)),
-    ) {
-        Row {
-            Column(
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxWidth()
-                    .align(Alignment.CenterVertically)
-                    .clickable { dwellingsViewModel.addDwelling(Dwelling(1,"a",DwellingType.House,"b")) }
-            ) {
-                Text(text = "New Dwelling", style = typography.h4)
-            }
-        }
-    }
-}*/
