@@ -7,7 +7,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -15,13 +14,13 @@ import com.example.keniphhomemaintenance.R
 
 @Composable
 fun KeniphFloatingActionButton(
-    succeedingDialogVisibility: MutableState<Boolean>
+    onClick: () -> Unit
 ) {
     FloatingActionButton(
             modifier = Modifier.size(50.dp),
     shape = CircleShape,
     onClick = {
-        succeedingDialogVisibility.value = true
+        onClick()
     }) {
         Icon(
             Icons.Default.Add,

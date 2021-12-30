@@ -8,4 +8,5 @@
     <string name="add_dwelling">Add dwelling</string>
     <string name="content_description_floating_action_button">Button to add a new item</string>
     <string name="see_details">See details</string>
+    <string name="utilities_screen_placeholder">Name of dwelling is %1$s, and its address is %2$s</string>
 </resources>

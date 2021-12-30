@@ -18,7 +18,8 @@ fun KeniphOutlinedTextField(
     textMutableState: MutableState<String>,
     textLabel: String,
     focusManager: FocusManager,
-    isThereAnotherTextFieldAfter: Boolean = false) =
+    keyboardAction: KeniphKeyboardActions = KeniphKeyboardActions.DEFAULT
+) =
 
     OutlinedTextField(
         modifier = Modifier
@@ -31,10 +32,10 @@ fun KeniphOutlinedTextField(
             imeAction = ImeAction.Next
         ),
         keyboardActions = KeyboardActions(onNext = {
-            if (isThereAnotherTextFieldAfter) {
-                focusManager.moveFocus(FocusDirection.Down)
-            } else {
-                focusManager.clearFocus()
+            when (keyboardAction) {
+                KeniphKeyboardActions.PREVIOUS -> focusManager.moveFocus(FocusDirection.Up)
+                KeniphKeyboardActions.NEXT -> focusManager.moveFocus(FocusDirection.Down)
+                else -> focusManager.clearFocus()
             }
         })
     )

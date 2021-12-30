@@ -1,4 +1,4 @@
-package com.example.keniphhomemaintenance.ui
+package com.example.keniphhomemaintenance.ui.navigation
 
 sealed class Screen(val route: String) {
     object DwellingsScreen: Screen("dwellings_screen")

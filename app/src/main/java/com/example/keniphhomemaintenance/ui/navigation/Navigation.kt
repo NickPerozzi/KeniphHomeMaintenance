@@ -1,4 +1,4 @@
-package com.example.keniphhomemaintenance
+package com.example.keniphhomemaintenance.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
@@ -7,8 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.keniphhomemaintenance.R
+import com.example.keniphhomemaintenance.UtilitiesScreen
 import com.example.keniphhomemaintenance.dwellings.DwellingsScreenView
-import com.example.keniphhomemaintenance.ui.Screen
 
 @Composable
 fun Navigation() {
@@ -22,11 +23,11 @@ fun Navigation() {
         composable(
             route = Screen.UtilitiesScreen.route + "/{name}" + "/{address}",
             arguments = listOf(
-                navArgument("name") {
+                navArgument(NavArgParams.DWELLING_NAME) {
                     type = NavType.StringType
                     defaultValue = defaultDwellingName
                     nullable = true
-                }, navArgument("address") {
+                }, navArgument(NavArgParams.DWELLING_ADDRESS) {
                     type = NavType.StringType
                     defaultValue = defaultDwellingAddress
                     nullable = true
@@ -34,8 +35,8 @@ fun Navigation() {
             )
         ) { entry ->
             UtilitiesScreen(
-                name = entry.arguments?.getString("name"),
-                address = entry.arguments?.getString("address")
+                name = entry.arguments?.getString(NavArgParams.DWELLING_NAME),
+                address = entry.arguments?.getString(NavArgParams.DWELLING_ADDRESS)
             )
         }
     }

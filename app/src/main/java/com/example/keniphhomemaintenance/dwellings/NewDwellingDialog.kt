@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -14,45 +15,48 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.keniphhomemaintenance.Dimens
 import com.example.keniphhomemaintenance.R
+import com.example.keniphhomemaintenance.ui.cookbook.KeniphKeyboardActions
 import com.example.keniphhomemaintenance.ui.cookbook.KeniphOutlinedTextField
 
 @Composable
 fun NewDwellingDialog(
     visibilityState: MutableState<Boolean>,
-    modifier: Modifier = Modifier,
-    newName: MutableState<String> = remember { mutableStateOf("") },
-    newAddress: MutableState<String> = remember { mutableStateOf("") },
-    dwellingsViewModel: DwellingsViewModel = viewModel()
 ) {
+
+    val newName: MutableState<String> = remember { mutableStateOf("") }
+    val newAddress: MutableState<String> = remember { mutableStateOf("") }
+    val dwellingsViewModel: DwellingsViewModel = viewModel()
 
     Dialog(onDismissRequest = {})
     {
         val focusManager = LocalFocusManager.current
         Column(
-            modifier
+            modifier = Modifier
                 .wrapContentSize()
-                .background(Color.LightGray)
-                .padding(16.dp),
+                .background(MaterialTheme.colors.background)
+                .padding(Dimens.DIALOG_PADDING),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
-            Text(text = stringResource(R.string.new_dwelling), fontSize = 20.sp, textAlign = TextAlign.Center)
+            Text(
+                text = stringResource(R.string.new_dwelling),
+                fontSize = Dimens.MAINTENANCE_ITEM_CARD_TITLE_TEXT_SIZE,
+                textAlign = TextAlign.Center
+            )
             Divider()
 
             KeniphOutlinedTextField(
                 textMutableState = newName,
                 textLabel = stringResource(R.string.dwelling_name),
                 focusManager = focusManager,
-                true
+                KeniphKeyboardActions.NEXT
             )
 
             KeniphOutlinedTextField(
@@ -63,10 +67,9 @@ fun NewDwellingDialog(
 
             Button(
                 modifier = Modifier
-                    .padding(16.dp),
+                    .padding(Dimens.BUTTON_PADDING),
                 onClick = {
                     val createdDwelling = Dwelling(
-                        5,
                         newName.value,
                         newAddress.value
                     )
