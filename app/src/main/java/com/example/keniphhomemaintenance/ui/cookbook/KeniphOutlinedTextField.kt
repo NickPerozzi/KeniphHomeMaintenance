@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
-import androidx.compose.ui.focus.FocusManager
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 
@@ -17,10 +17,10 @@ import androidx.compose.ui.text.input.KeyboardType
 fun KeniphOutlinedTextField(
     textMutableState: MutableState<String>,
     textLabel: String,
-    focusManager: FocusManager,
     keyboardAction: KeniphKeyboardActions = KeniphKeyboardActions.DEFAULT
-) =
+) {
 
+    val focusManager = LocalFocusManager.current
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth(),
@@ -35,7 +35,8 @@ fun KeniphOutlinedTextField(
             when (keyboardAction) {
                 KeniphKeyboardActions.PREVIOUS -> focusManager.moveFocus(FocusDirection.Up)
                 KeniphKeyboardActions.NEXT -> focusManager.moveFocus(FocusDirection.Down)
-                else -> focusManager.clearFocus()
+                KeniphKeyboardActions.DEFAULT -> focusManager.clearFocus()
             }
         })
     )
+}

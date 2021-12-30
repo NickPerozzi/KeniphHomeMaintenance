@@ -26,18 +26,14 @@ fun Navigation() {
             arguments = listOf(
                 navArgument(DwellingsNavArgParameters.DWELLING_NAME) {
                     type = NavType.StringType
-                    defaultValue = defaultDwellingName
-                    nullable = true
                 }, navArgument(DwellingsNavArgParameters.DWELLING_ADDRESS) {
                     type = NavType.StringType
-                    defaultValue = defaultDwellingAddress
-                    nullable = true
                 }
             )
         ) { entry ->
             UtilitiesScreen(
-                name = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_NAME),
-                address = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_ADDRESS)
+                name = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_NAME) ?: defaultDwellingName,
+                address = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_ADDRESS) ?: defaultDwellingAddress
             )
         }
     }

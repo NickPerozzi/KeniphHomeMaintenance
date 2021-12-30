@@ -15,7 +15,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.window.Dialog
@@ -36,7 +35,6 @@ fun NewDwellingDialog(
 
     Dialog(onDismissRequest = {})
     {
-        val focusManager = LocalFocusManager.current
         Column(
             modifier = Modifier
                 .wrapContentSize()
@@ -55,20 +53,24 @@ fun NewDwellingDialog(
             KeniphOutlinedTextField(
                 textMutableState = newName,
                 textLabel = stringResource(R.string.dwelling_name),
-                focusManager = focusManager,
                 KeniphKeyboardActions.NEXT
             )
 
             KeniphOutlinedTextField(
                 textMutableState = newAddress,
-                textLabel = stringResource(R.string.dwelling_address),
-                focusManager = focusManager
+                textLabel = stringResource(R.string.dwelling_address)
             )
 
             Button(
                 modifier = Modifier
                     .padding(Dimens.BUTTON_PADDING),
                 onClick = {
+                    if (newName.value == "") {
+                        newName.value = "Blank name. Oops!"
+                    }
+                    if (newAddress.value == "") {
+                        newAddress.value = "Blank address. Oops!"
+                    }
                     val createdDwelling = Dwelling(
                         newName.value,
                         newAddress.value
