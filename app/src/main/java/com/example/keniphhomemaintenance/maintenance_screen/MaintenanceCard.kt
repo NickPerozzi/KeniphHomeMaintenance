@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import com.example.keniphhomemaintenance.CompanionObjects.Companion.getLightOrDarkIcon
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_CARD_ROW_START_PADDING
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_CARD_ROW_VERTICAL_PADDING
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_CARD_START_PADDING
@@ -28,16 +28,9 @@ fun MaintenanceCard(maintenanceItem: MaintenanceItem) {
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        val isLightTheme = MaterialTheme.colors.isLight
+        val imageResource = getLightOrDarkIcon(MaterialTheme.colors.isLight)
         Image(
-            painter = painterResource(
-                id =
-                if (isLightTheme) {
-                    R.drawable.ic_baseline_build_24_light
-                } else {
-                    R.drawable.ic_baseline_build_24_dark
-                }
-            ),
+            painter = painterResource(id = imageResource),
             contentDescription = stringResource(id = R.string.maintenance_item_type_image),
             modifier = Modifier
                 .size(MAINTENANCE_IMAGE_SIZE)
@@ -48,5 +41,6 @@ fun MaintenanceCard(maintenanceItem: MaintenanceItem) {
 
         ListItemBones(maintenanceItem = maintenanceItem)
     }
+
 }
 
