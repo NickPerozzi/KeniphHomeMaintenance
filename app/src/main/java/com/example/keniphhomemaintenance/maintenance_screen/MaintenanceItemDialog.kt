@@ -2,6 +2,7 @@ package com.example.keniphhomemaintenance.maintenance_screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -88,26 +89,42 @@ fun NewMaintenanceItemDialog(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    CloseMaintenanceDialog(
-                        isDialogOpen = isDialogOpen,
-                        itemTitle = itemTitle,
-                        dueDate = dueDate,
-                        location = location,
-                        stringResource = R.string.maintenance_item_dialog_cancel_button_text,
-                        addMaintenanceItem = false
+
+                        ExtendedFloatingActionButton(
+                            onClick = {
+                                maintenanceItemDialogEFABOnClick(
+                                    isDialogOpen = isDialogOpen,
+                                    itemTitle = itemTitle,
+                                    dueDate = dueDate,
+                                    location = location
+                                )
+                            },
+                            text = { Text(text = stringResource(id = R.string.maintenance_item_dialog_cancel_button_text)) }
+                        )
+
+                    ExtendedFloatingActionButton(
+                        onClick = {
+                            maintenanceViewModel.addMaintenanceItem(itemTitle.value, dueDate.value, location.value)
+                            maintenanceItemDialogEFABOnClick(
+                                isDialogOpen = isDialogOpen,
+                                itemTitle = itemTitle,
+                                dueDate = dueDate,
+                                location = location
+                            )
+                        },
+                        text = { Text(text = stringResource(id = R.string.maintenance_item_dialog_add_item_button_text)) }
                     )
 
-                    CloseMaintenanceDialog(
-                        isDialogOpen = isDialogOpen,
-                        itemTitle = itemTitle,
-                        dueDate = dueDate,
-                        location = location,
-                        stringResource = R.string.maintenance_item_dialog_add_item_button_text,
-                        addMaintenanceItem = true
-                    )
                 }
             }
         }
     }
+}
+
+fun maintenanceItemDialogEFABOnClick(isDialogOpen: MutableState<Boolean>, itemTitle: MutableState<String>, dueDate: MutableState<String>, location: MutableState<String>) {
+    isDialogOpen.value = false
+    itemTitle.value = ""
+    dueDate.value = ""
+    location.value = ""
 }
 

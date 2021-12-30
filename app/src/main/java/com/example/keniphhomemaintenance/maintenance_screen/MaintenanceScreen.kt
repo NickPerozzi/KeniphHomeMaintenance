@@ -27,9 +27,7 @@ fun MaintenanceScreen(maintenanceViewModel: MaintenanceViewModel = viewModel()) 
             FloatingActionButton(
                 modifier = Modifier.size( ADD_MAINTENANCE_ITEM_BUTTON_SIZE),
                 shape = CircleShape,
-                onClick = {
-                    isDialogOpen.value = true
-                }
+                onClick = { isDialogOpen.value = true }
             ) {
                 Icon(Icons.Default.Add, contentDescription = stringResource(id = R.string.new_maintenance_item_button))
             }
