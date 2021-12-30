@@ -47,7 +47,7 @@ fun NewDwellingDialog(
         ) {
             Text(
                 text = stringResource(R.string.new_dwelling),
-                fontSize = Dimens.MAINTENANCE_ITEM_CARD_TITLE_TEXT_SIZE,
+                fontSize = Dimens.NEW_DWELLING_TEXT_SIZE,
                 textAlign = TextAlign.Center
             )
             Divider()

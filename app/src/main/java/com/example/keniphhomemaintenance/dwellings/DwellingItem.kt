@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.keniphhomemaintenance.Dimens
 import com.example.keniphhomemaintenance.R
@@ -29,7 +28,7 @@ fun DwellingItem(dwelling: Dwelling, navController: NavController) {
             .fillMaxWidth(),
         elevation = Dimens.DWELLING_ITEM_CARD_ELEVATION,
         backgroundColor = MaterialTheme.colors.background,
-        shape = RoundedCornerShape(corner = CornerSize(16.dp)),
+        shape = RoundedCornerShape(corner = CornerSize(Dimens.CARD_CORNER_RADIUS)),
     ) {
         Row {
             Column(
@@ -39,7 +38,7 @@ fun DwellingItem(dwelling: Dwelling, navController: NavController) {
                     .align(Alignment.CenterVertically)
             ) {
                 Text(text = dwelling.name, style = typography.h4)
-                Text(text = dwelling.address as String, style = typography.h6)
+                Text(text = dwelling.address, style = typography.h6)
                 Button(onClick = {
                     navController.navigate(
                         Screen.UtilitiesScreen.withArgs(
@@ -47,6 +46,7 @@ fun DwellingItem(dwelling: Dwelling, navController: NavController) {
                             dwelling.address
                         )
                     )
+
                 }) {
                     Text(text = stringResource(R.string.see_details))
                 }

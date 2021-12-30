@@ -9,7 +9,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import com.example.keniphhomemaintenance.Dimens
 import com.example.keniphhomemaintenance.R
 
 @Composable
@@ -17,7 +17,7 @@ fun KeniphFloatingActionButton(
     onClick: () -> Unit
 ) {
     FloatingActionButton(
-            modifier = Modifier.size(50.dp),
+            modifier = Modifier.size(Dimens.FLOATING_ACTION_BUTTON_SIZE),
     shape = CircleShape,
     onClick = {
         onClick()

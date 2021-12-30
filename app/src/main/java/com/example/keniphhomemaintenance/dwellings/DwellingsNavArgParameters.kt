@@ -1,6 +1,6 @@
-package com.example.keniphhomemaintenance.ui.navigation
+package com.example.keniphhomemaintenance.dwellings
 
-class NavArgParams {
+class DwellingsNavArgParameters {
     companion object {
         const val DWELLING_NAME = "name"
         const val DWELLING_ADDRESS = "address"

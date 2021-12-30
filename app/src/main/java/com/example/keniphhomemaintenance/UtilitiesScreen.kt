@@ -11,6 +11,12 @@ import androidx.compose.ui.res.stringResource
 @Composable
 fun UtilitiesScreen(name: String?, address: String?) {
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-        Text(text = stringResource(R.string.utilities_screen_placeholder, name as Any, address as Any))
+        name?.let { name ->
+            address?.let { address ->
+        Text(text =
+                stringResource(R.string.utilities_screen_placeholder, name, address)
+        )
+            }
+        }
     }
 }
