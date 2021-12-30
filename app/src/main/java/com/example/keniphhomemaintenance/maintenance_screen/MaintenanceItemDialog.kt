@@ -92,7 +92,7 @@ fun NewMaintenanceItemDialog(
 
                         ExtendedFloatingActionButton(
                             onClick = {
-                                maintenanceItemDialogEFABOnClick(
+                                onMaintenanceItemDialogClose(
                                     isDialogOpen = isDialogOpen,
                                     itemTitle = itemTitle,
                                     dueDate = dueDate,
@@ -105,7 +105,7 @@ fun NewMaintenanceItemDialog(
                     ExtendedFloatingActionButton(
                         onClick = {
                             maintenanceViewModel.addMaintenanceItem(itemTitle.value, dueDate.value, location.value)
-                            maintenanceItemDialogEFABOnClick(
+                            onMaintenanceItemDialogClose(
                                 isDialogOpen = isDialogOpen,
                                 itemTitle = itemTitle,
                                 dueDate = dueDate,
@@ -118,10 +118,10 @@ fun NewMaintenanceItemDialog(
                 }
             }
         }
-    }
+    } 
 }
 
-fun maintenanceItemDialogEFABOnClick(isDialogOpen: MutableState<Boolean>, itemTitle: MutableState<String>, dueDate: MutableState<String>, location: MutableState<String>) {
+fun onMaintenanceItemDialogClose(isDialogOpen: MutableState<Boolean>, itemTitle: MutableState<String>, dueDate: MutableState<String>, location: MutableState<String>) {
     isDialogOpen.value = false
     itemTitle.value = ""
     dueDate.value = ""

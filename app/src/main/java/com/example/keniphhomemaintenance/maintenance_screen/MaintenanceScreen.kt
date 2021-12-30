@@ -25,7 +25,7 @@ fun MaintenanceScreen(maintenanceViewModel: MaintenanceViewModel = viewModel()) 
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                modifier = Modifier.size( ADD_MAINTENANCE_ITEM_BUTTON_SIZE),
+                modifier = Modifier.size(ADD_MAINTENANCE_ITEM_BUTTON_SIZE),
                 shape = CircleShape,
                 onClick = { isDialogOpen.value = true }
             ) {
