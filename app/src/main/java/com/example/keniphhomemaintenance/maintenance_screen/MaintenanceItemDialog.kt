@@ -22,7 +22,6 @@ import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_ITEM_DIALOG_LOCATION
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_ITEM_DIALOG_PADDING_BETWEEN_TEXT_FIELDS
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_ITEM_DIALOG_TITLE_BOTTOM_PADDING
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_ITEM_DIALOG_TOP_PADDING
-import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_ITEM_DIALOG_VERTICAL_PADDING
 import com.example.keniphhomemaintenance.R
 
 @Composable
@@ -38,10 +37,10 @@ fun NewMaintenanceItemDialog(
         onDismissRequest = { isDialogOpen.value = false }) {
         Surface(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(vertical = MAINTENANCE_ITEM_DIALOG_VERTICAL_PADDING),
+                .wrapContentSize(),
             shape = RoundedCornerShape(MAINTENANCE_ITEM_DIALOG_CORNER_RADIUS),
-            color = MaterialTheme.colors.background
+            color = MaterialTheme.colors.surface,
+
         ) {
             Column(
                 modifier = Modifier.padding(MAINTENANCE_ITEM_DIALOG_TOP_PADDING),
@@ -90,17 +89,17 @@ fun NewMaintenanceItemDialog(
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
 
-                        ExtendedFloatingActionButton(
-                            onClick = {
-                                onMaintenanceItemDialogClose(
-                                    isDialogOpen = isDialogOpen,
-                                    itemTitle = itemTitle,
-                                    dueDate = dueDate,
-                                    location = location
-                                )
-                            },
-                            text = { Text(text = stringResource(id = R.string.maintenance_item_dialog_cancel_button_text)) }
-                        )
+                    ExtendedFloatingActionButton(
+                        onClick = {
+                            onMaintenanceItemDialogClose(
+                                isDialogOpen = isDialogOpen,
+                                itemTitle = itemTitle,
+                                dueDate = dueDate,
+                                location = location
+                            )
+                        },
+                        text = { Text(text = stringResource(id = R.string.maintenance_item_dialog_cancel_button_text)) }
+                    )
 
                     ExtendedFloatingActionButton(
                         onClick = {
@@ -118,10 +117,15 @@ fun NewMaintenanceItemDialog(
                 }
             }
         }
-    } 
+    }
 }
 
-fun onMaintenanceItemDialogClose(isDialogOpen: MutableState<Boolean>, itemTitle: MutableState<String>, dueDate: MutableState<String>, location: MutableState<String>) {
+fun onMaintenanceItemDialogClose(
+    isDialogOpen: MutableState<Boolean>,
+    itemTitle: MutableState<String>,
+    dueDate: MutableState<String>,
+    location: MutableState<String>
+) {
     isDialogOpen.value = false
     itemTitle.value = ""
     dueDate.value = ""

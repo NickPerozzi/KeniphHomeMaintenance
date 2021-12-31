@@ -1,34 +1,41 @@
-package com.example.keniphhomemaintenance.navigation
+package com.example.keniphhomemaintenance.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.keniphhomemaintenance.dwelling_screen.DwellingScreen
+import com.example.keniphhomemaintenance.R
+import com.example.keniphhomemaintenance.dwellings.DwellingsNavArgParameters
+import com.example.keniphhomemaintenance.dwellings.DwellingsScreenView
 import com.example.keniphhomemaintenance.maintenance_screen.MaintenanceScreen
+import com.example.keniphhomemaintenance.navigation.Screen
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.DwellingCreationScreen.route) {
-        composable(route = Screen.DwellingCreationScreen.route) {
-            DwellingScreen(navController = navController)
-            
+    val defaultDwellingName = stringResource(R.string.default_dwelling_name)
+    val defaultDwellingAddress = stringResource(R.string.default_dwelling_address)
+    NavHost(navController = navController, startDestination = Screen.DwellingsScreen.route) {
+        composable(route = Screen.DwellingsScreen.route) {
+            DwellingsScreenView(navController = navController)
         }
         composable(
-            route = Screen.MaintenanceListScreen.route + "/{dwellingName}",
+            route = Screen.MaintenanceListScreen.route + "/{name}" + "/{address}",
             arguments = listOf(
-                navArgument("dwellingName") {
+                navArgument(DwellingsNavArgParameters.DWELLING_NAME) {
                     type = NavType.StringType
-                    nullable = true
+                }, navArgument(DwellingsNavArgParameters.DWELLING_ADDRESS) {
+                    type = NavType.StringType
                 }
             )
-        ) {
-            MaintenanceScreen()
+        ) { entry ->
+            MaintenanceScreen(
+                name = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_NAME) ?: defaultDwellingName,
+                address = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_ADDRESS) ?: defaultDwellingAddress
+            )
         }
     }
 }
-
-

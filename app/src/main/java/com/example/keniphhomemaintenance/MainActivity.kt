@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import com.example.keniphhomemaintenance.navigation.Navigation
+import com.example.keniphhomemaintenance.ui.navigation.Navigation
 import com.example.keniphhomemaintenance.ui.theme.KeniphHomeMaintenanceTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,10 +18,7 @@ class MainActivity : ComponentActivity() {
                 Navigation()
             }
             }
-
         }
-
-
     }
 
 

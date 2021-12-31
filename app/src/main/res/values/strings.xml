@@ -12,4 +12,13 @@
     <string name = "task_name_field_label">Task name</string>
     <string name = "maintenance_item_type_image">Maintenance item type image</string>
 
+    <string name="default_dwelling_name">Default Name</string>
+    <string name="default_dwelling_address">Default Address</string>
+    <string name="dwelling_name">Dwelling name</string>
+    <string name="dwelling_address">Dwelling address</string>
+    <string name="new_dwelling">New dwelling!</string>
+    <string name="add_dwelling">Add dwelling</string>
+    <string name="content_description_floating_action_button">Button to add a new item</string>
+    <string name="see_details">See details</string>
+    <string name="utilities_screen_placeholder">Name of dwelling is %1$s, and its address is %2$s</string>
 </resources>
