@@ -10,16 +10,20 @@ private val DarkColorPalette = darkColors(
     primary = Purple200,
     primaryVariant = Purple700,
     secondary = Teal200,
-    background = LightGray1,
-    onSurface = Transparent
+    onBackground = White,
+    background = Black,
+    onSurface = White,
+    surface = DarkGray1
 )
 
 private val LightColorPalette = lightColors(
     primary = Purple500,
     primaryVariant = Purple700,
     secondary = Teal200,
-    background = LightGray1,
-    onSurface = Transparent
+    onBackground = Black,
+    background = White,
+    onSurface = Black,
+    surface = LightGray1
 
     /* Other default colors to override
     background = Color.White,

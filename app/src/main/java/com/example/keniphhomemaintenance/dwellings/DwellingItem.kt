@@ -18,7 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.keniphhomemaintenance.Dimens
 import com.example.keniphhomemaintenance.R
-import com.example.keniphhomemaintenance.ui.navigation.Screen
+import com.example.keniphhomemaintenance.navigation.Screen
 
 @Composable
 fun DwellingItem(dwelling: Dwelling, navController: NavController) {
@@ -27,7 +27,7 @@ fun DwellingItem(dwelling: Dwelling, navController: NavController) {
             .padding(Dimens.DWELLING_ITEM_CARD_PADDING)
             .fillMaxWidth(),
         elevation = Dimens.DWELLING_ITEM_CARD_ELEVATION,
-        backgroundColor = MaterialTheme.colors.background,
+        backgroundColor = MaterialTheme.colors.surface,
         shape = RoundedCornerShape(corner = CornerSize(Dimens.CARD_CORNER_RADIUS)),
     ) {
         Row {
@@ -37,11 +37,11 @@ fun DwellingItem(dwelling: Dwelling, navController: NavController) {
                     .fillMaxWidth()
                     .align(Alignment.CenterVertically)
             ) {
-                Text(text = dwelling.name, style = typography.h4)
-                Text(text = dwelling.address, style = typography.h6)
+                Text(text = dwelling.name, style = typography.h4, color = MaterialTheme.colors.onSurface)
+                Text(text = dwelling.address, style = typography.h6, color = MaterialTheme.colors.onSurface)
                 Button(onClick = {
                     navController.navigate(
-                        Screen.UtilitiesScreen.withArgs(
+                        Screen.MaintenanceListScreen.withArgs(
                             dwelling.name,
                             dwelling.address
                         )

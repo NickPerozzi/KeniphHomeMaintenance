@@ -8,9 +8,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.keniphhomemaintenance.R
-import com.example.keniphhomemaintenance.UtilitiesScreen
 import com.example.keniphhomemaintenance.dwellings.DwellingsNavArgParameters
 import com.example.keniphhomemaintenance.dwellings.DwellingsScreenView
+import com.example.keniphhomemaintenance.maintenance_screen.MaintenanceScreen
+import com.example.keniphhomemaintenance.navigation.Screen
 
 @Composable
 fun Navigation() {
@@ -22,7 +23,7 @@ fun Navigation() {
             DwellingsScreenView(navController = navController)
         }
         composable(
-            route = Screen.UtilitiesScreen.route + "/{name}" + "/{address}",
+            route = Screen.MaintenanceListScreen.route + "/{name}" + "/{address}",
             arguments = listOf(
                 navArgument(DwellingsNavArgParameters.DWELLING_NAME) {
                     type = NavType.StringType
@@ -31,7 +32,7 @@ fun Navigation() {
                 }
             )
         ) { entry ->
-            UtilitiesScreen(
+            MaintenanceScreen(
                 name = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_NAME) ?: defaultDwellingName,
                 address = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_ADDRESS) ?: defaultDwellingAddress
             )

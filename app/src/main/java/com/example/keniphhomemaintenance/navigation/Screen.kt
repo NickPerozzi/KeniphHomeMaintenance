@@ -1,8 +1,8 @@
-package com.example.keniphhomemaintenance.ui.navigation
+package com.example.keniphhomemaintenance.navigation
 
 sealed class Screen(val route: String) {
     object DwellingsScreen : Screen("dwellings_screen")
-    object UtilitiesScreen : Screen("utilities_screen")
+    object MaintenanceListScreen : Screen("maintenance_list_screen")
 
     fun withArgs(vararg args: String?): String {
         return buildString {

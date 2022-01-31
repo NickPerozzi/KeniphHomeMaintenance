@@ -25,9 +25,8 @@ fun DwellingsScreenView(
     Scaffold(
         modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight()
-            .background(MaterialTheme.colors.onSurface),
-        backgroundColor = MaterialTheme.colors.onSurface,
+            .wrapContentHeight(),
+        backgroundColor = MaterialTheme.colors.background,
         floatingActionButton = {
             KeniphFloatingActionButton(onClick = { isDwellingDialogVisible.value = true })
         },

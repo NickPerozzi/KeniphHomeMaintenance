@@ -13,9 +13,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             KeniphHomeMaintenanceTheme {
-                Surface(color = MaterialTheme.colors.background) {}
-            Navigation()
-        }
+                Surface(color = MaterialTheme.colors.background) {
+                }
+                Navigation()
+            }
+            }
         }
     }
-}
+
+
