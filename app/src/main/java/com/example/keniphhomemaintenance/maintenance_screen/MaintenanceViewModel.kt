@@ -1,20 +1,45 @@
 package com.example.keniphhomemaintenance.maintenance_screen
 
+import android.content.Context
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.example.keniphhomemaintenance.R
+import androidx.lifecycle.viewModelScope
+import com.example.keniphhomemaintenance.database.DwellingWithMaintenanceItems
+import com.example.keniphhomemaintenance.database.KeniphDatabase
+import com.example.keniphhomemaintenance.database.KeniphRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class MaintenanceViewModel: ViewModel() {
+class MaintenanceViewModel(context: Context): ViewModel() {
 
-    val maintenanceItemList: MutableState<List<MaintenanceItem>> = mutableStateOf(listOf(
-        MaintenanceItem(R.drawable.ic_baseline_build_24_light, "Change Air Filter", "Due date: 1/5/22", "Located at: Basement"),
-        MaintenanceItem(R.drawable.ic_baseline_build_24_light, "Break Microwave", "Due date: 6/9/22", "Located at: Kitchen"),
-        MaintenanceItem(R.drawable.ic_baseline_build_24_light, "Buy New Microwave", "Due date: 6/4/22", "Located at: Walmart?")
-    ))
+    private val repository: KeniphRepository
+    val maintenanceItemsList: MutableState<List<MaintenanceItem>> = mutableStateOf( emptyList() )
 
-    fun addMaintenanceItem(itemTitle: String, dueDate: String, location: String) {
-        maintenanceItemList.value += MaintenanceItem(R.drawable.ic_baseline_build_24_light, itemTitle, dueDate, location)
+    init {
+        val dwellingsDao = KeniphDatabase.getKeniphDatabase(context).dwellingsDao()
+        repository = KeniphRepository(dwellingsDao)
+    }
+
+    fun addMaintenanceItem(newMaintenanceItem: MaintenanceItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addMaintenanceItemToDb(newMaintenanceItem)
+            maintenanceItemsList.value += newMaintenanceItem
+        }
+    }
+
+    fun getMaintenanceItems(dwellingID: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            maintenanceItemsList.value = parseMaintenanceItems( repository.getMaintenanceItemsForDwellingFromDb(dwellingID) )
+        }
+    }
+
+    private fun parseMaintenanceItems(maintenanceCollection: List<DwellingWithMaintenanceItems>): List<MaintenanceItem> {
+        val maintenanceItems: MutableList<MaintenanceItem> = mutableListOf()
+        for (task in maintenanceCollection[0].maintenanceItems) {
+            maintenanceItems.add( task )
+        }
+        return maintenanceItems.toList()
     }
 
 }
