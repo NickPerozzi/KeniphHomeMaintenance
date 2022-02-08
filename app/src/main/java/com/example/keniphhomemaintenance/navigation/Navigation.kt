@@ -1,4 +1,4 @@
-package com.example.keniphhomemaintenance.ui.navigation
+package com.example.keniphhomemaintenance.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
@@ -23,16 +23,21 @@ fun Navigation() {
             DwellingsScreenView(navController = navController)
         }
         composable(
-            route = Screen.MaintenanceListScreen.route + "/{name}" + "/{address}",
+            route = Screen.MaintenanceListScreen.route + "/{id}" + "/{name}" + "/{address}",
             arguments = listOf(
+                navArgument(DwellingsNavArgParameters.DWELLING_ID) {
+                    type = NavType.IntType
+                },
                 navArgument(DwellingsNavArgParameters.DWELLING_NAME) {
                     type = NavType.StringType
-                }, navArgument(DwellingsNavArgParameters.DWELLING_ADDRESS) {
+                },
+                navArgument(DwellingsNavArgParameters.DWELLING_ADDRESS) {
                     type = NavType.StringType
                 }
             )
         ) { entry ->
             MaintenanceScreen(
+                dwellingID = entry.arguments?.getInt(DwellingsNavArgParameters.DWELLING_ID)  ?: 0,
                 name = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_NAME) ?: defaultDwellingName,
                 address = entry.arguments?.getString(DwellingsNavArgParameters.DWELLING_ADDRESS) ?: defaultDwellingAddress
             )

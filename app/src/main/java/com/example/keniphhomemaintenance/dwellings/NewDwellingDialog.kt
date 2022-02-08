@@ -15,10 +15,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.keniphhomemaintenance.CompanionObjects.Companion.PLACEHOLDER_ID
 import com.example.keniphhomemaintenance.Dimens
 import com.example.keniphhomemaintenance.R
 import com.example.keniphhomemaintenance.ui.cookbook.KeniphKeyboardActions
@@ -31,7 +33,7 @@ fun NewDwellingDialog(
 
     val newName: MutableState<String> = remember { mutableStateOf("") }
     val newAddress: MutableState<String> = remember { mutableStateOf("") }
-    val dwellingsViewModel: DwellingsViewModel = viewModel()
+    val dwellingsViewModel: DwellingsViewModel = viewModel(factory = DwellingsViewModelFactory(LocalContext.current))
 
     Dialog(onDismissRequest = {})
     {
@@ -71,7 +73,7 @@ fun NewDwellingDialog(
                     if (newAddress.value == "") {
                         newAddress.value = "Blank address. Oops!"
                     }
-                    val createdDwelling = Dwelling(
+                    val createdDwelling = Dwelling(PLACEHOLDER_ID,
                         newName.value,
                         newAddress.value
                     )
@@ -83,4 +85,5 @@ fun NewDwellingDialog(
             }
         }
     }
+
 }

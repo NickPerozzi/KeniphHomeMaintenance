@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.keniphhomemaintenance.CompanionObjects.Companion.PLACEHOLDER_ID
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_ITEM_CARD_TITLE_TEXT_SIZE
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_ITEM_DIALOG_CORNER_RADIUS
 import com.example.keniphhomemaintenance.Dimens.MAINTENANCE_ITEM_DIALOG_LOCATION_FIELD_BOTTOM_PADDING
@@ -27,6 +28,7 @@ import com.example.keniphhomemaintenance.R
 @Composable
 fun NewMaintenanceItemDialog(
     isDialogOpen: MutableState<Boolean>,
+    dwellingID: Int,
     maintenanceViewModel: MaintenanceViewModel = viewModel()
 ) {
     val itemTitle = remember { mutableStateOf("") }
@@ -103,7 +105,8 @@ fun NewMaintenanceItemDialog(
 
                     ExtendedFloatingActionButton(
                         onClick = {
-                            maintenanceViewModel.addMaintenanceItem(itemTitle.value, dueDate.value, location.value)
+                            val newMaintenanceItem = MaintenanceItem(PLACEHOLDER_ID, R.drawable.ic_baseline_build_24_light, itemTitle.value, dueDate.value, location.value, dwellingID)
+                            maintenanceViewModel.addMaintenanceItem(newMaintenanceItem)
                             onMaintenanceItemDialogClose(
                                 isDialogOpen = isDialogOpen,
                                 itemTitle = itemTitle,

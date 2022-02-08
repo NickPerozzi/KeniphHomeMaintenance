@@ -42,6 +42,7 @@ fun DwellingItem(dwelling: Dwelling, navController: NavController) {
                 Button(onClick = {
                     navController.navigate(
                         Screen.MaintenanceListScreen.withArgs(
+                            dwelling.dwellingID.toString(),
                             dwelling.name,
                             dwelling.address
                         )
